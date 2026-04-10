@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Amelia ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* 🌸 Background Image */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('flower.png') no-repeat center center/cover;
+      filter: blur(8px) brightness(0.6);
+      z-index: -1;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 32px;
+    }
+
+    h2 {
+      font-weight: normal;
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    .timer {
+      font-size: 28px;
+      margin-top: 20px;
+    }
+
+    .heart {
+      font-size: 40px;
+      animation: beat 1s infinite;
+      margin-top: 10px;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 18px;
+      opacity: 0.95;
+    }
+
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #ff6b81;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: #ff4757;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>For Amelia ❤️</h1>
+  <h2>Counting down to our 1 year together</h2>
+
+  <div class="heart">💖</div>
+
+  <div class="timer" id="timer"></div>
+
+  <div class="message" id="message"></div>
+
+  <button class="button" onclick="showLove()">Click me 💌</button>
+</div>
+
+<script>
+  // ⏳ Countdown to May 10, 2026
+  const targetDate = new Date("2026-05-10 00:00:00");
+
+  const messages = [
+    "I miss you, Amelia 💭",
+    "Thank you for staying ❤️",
+    "Every second with you matters",
+    "You're my favorite person 🫶",
+    "Even from far away, you feel close 🥺",
+    "I can’t wait to hold you",
+    "You make everything worth it 💖"
+  ];
+
+  function updateTimer() {
+    const now = new Date();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+      document.getElementById("timer").innerHTML = "Happy 1 Year ❤️";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("timer").innerHTML =
+      `${days} days<br>${hours} hours ${minutes} minutes ${seconds} seconds`;
+  }
+
+  function changeMessage() {
+    const random = Math.floor(Math.random() * messages.length);
+    document.getElementById("message").innerText = messages[random];
+  }
+
+  function showLove() {
+    alert("I love you, Amelia ❤️ Thank you for staying with me.");
+  }
+
+  setInterval(updateTimer, 1000);
+  setInterval(changeMessage, 4000);
+
+  updateTimer();
+  changeMessage();
+</script>
+
+</body>
+</html>
